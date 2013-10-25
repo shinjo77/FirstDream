@@ -13,6 +13,8 @@
 <script src="js/jquery-ui.min.js"></script>
 <!-- jquery mobile -->
 <script src="js/jquery.mobile-1.3.2.min.js"></script>
+<!-- require js -->
+<script src="js/require.min.js"></script>
 <!-- backbone -->
 <script src="js/backbone-min.js"></script>
 <!-- underscore -->
@@ -25,24 +27,41 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <!-- Optional theme -->
 <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-<style>
-#content{
-	margin:0 auto;
-	width:600px;
-	}
-</style>
 </head>
 
 <body>
-<div id="content">
+<div class="container">
 	<div class="row">
-		<div class"col-md-3 col-xs-6">
-			<p>This is Dream maker</p>
-			<p>Please login</p>
-		</div>
-		<div class"col-md-3 col-xs-6">
-			<p>ID: <input type="text" id="loginId" /></p>
-			<p>PW: <input type="password" id="pwd"></p>
+		<div class="col-md-6 col-lg-offset-3">
+			<h1>Dream maker</h1>
+			<form class="form-horizontal" role="form">
+			  <div class="form-group">
+			    <label for="inputEmail1" class="col-lg-2 control-label">Email</label>
+			    <div class="col-lg-10">
+			      <input type="email" class="form-control" id="inputEmail1" placeholder="Email">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label for="inputPassword1" class="col-lg-2 control-label">Password</label>
+			    <div class="col-lg-10">
+			      <input type="password" class="form-control" id="inputPassword1" placeholder="Password">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <div class="col-lg-offset-2 col-lg-10">
+			      <div class="checkbox">
+			        <label>
+			          <input type="checkbox"> Remember me
+			        </label>
+			      </div>
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <div class="col-lg-offset-2 col-lg-10">
+			      <button type="submit" class="btn btn-primary">Sign in</button>
+			    </div>
+			  </div>
+			</form>
 		</div>
 	</div>
 </div>
