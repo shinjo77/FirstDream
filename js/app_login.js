@@ -3,7 +3,7 @@ var Login = Backbone.Model.extend({
 		email: 'test@test.com',
 		pw: 'test'
 	},
-	el: $('.container'),
+	el: $('#this_content'),
 	
 	initialize: function(){
 		this.render();
@@ -16,33 +16,40 @@ var Login = Backbone.Model.extend({
 });
 
 var LoginView = Backbone.View.extend({
-	el: $('.container'),
+	el: $('#this_content'),
 	events: {
 		"click #signin": "doCheck"
 	},
 	initialize: function(){
 		_.bindAll(this, 'doCheck');
 		
-		var login = new Login();
 		this.login = new Login();
-		this.getid = login.get("email");
-		this.getpw = login.get("pw");
+		this.getid = this.login.get("email");
+		this.getpw = this.login.get("pw");
 		this.thisid = $("#inputEmail").val();
 		this.thispw = $("#inputPassword").val();
 		
 	},
 	doCheck: function( event ){
 		// Button clicked, you can access the element that was clicked with event.currentTarget
-		var self = this;
-		var contentTemplateSource = $("#content_template").html();
-		var contentTemplate = Handlebars.compile(contentTemplateSource);
-		
+		//this.collection.toJSON();
 		
 		if( (this.thisid !== this.getid) && (this.thispw !== this.getpw)){
-			$(this.el).html(contentTemplate);
+			this.render(); //this is to test
+			//$(this.el).html('<h1>Please check you login</h1>');
 		} else {
-			$(this.el).html('<p>Pleasae check you login</p>');
+			$(this.el).html('<h1>Please check you login</h1>'); //this is to test
+			//$(this.el).html(contentTemplate);
 		}
+	},
+	render: function( event ){
+		// Button clicked, you can access the element that was clicked with event.currentTarget
+		var self = this;
+		var contentTemplateSource = $("#content_template").html();
+		var contentTemplate = Handlebars.compile(contentTemplateSource);		
+		var theData = this.login.toJSON();
+		//this.collection.toJSON();
+		$(this.el).html(contentTemplate(theData));
 	}
 });
 
