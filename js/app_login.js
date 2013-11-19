@@ -3,7 +3,7 @@ var Login = Backbone.Model.extend({
 		email: 'test@test.com',
 		pw: 'test'
 	},
-	el: $('#this_content'),
+	el: $('#content'),
 	
 	initialize: function(){
 		this.render();
@@ -16,7 +16,7 @@ var Login = Backbone.Model.extend({
 });
 
 var LoginView = Backbone.View.extend({
-	el: $('#this_content'),
+	el: $('#content'),
 	events: {
 		"click #signin": "doCheck"
 	},

@@ -6,16 +6,14 @@ var saveContnet = Backbone.Model.extend({
 });
 
 var saveView = Backbone.View.extend({
-	el: $('#this_content'),
+	el: $('#content'),
 	events: {
 		"click #save": "saveContent",
 		"click #get": "getContent",
 		"click #clear": "clearContent"
 	},
 	initialize: function(){
-		_.bindAll(this, 'saveContent', 'getContent');
-		
-				
+		_.bindAll(this, 'saveContent', 'getContent');			
 	},
 	saveContent: function(){
 		var subject = $("#subject").val();
@@ -28,11 +26,18 @@ var saveView = Backbone.View.extend({
 	},
 	getContent: function(){
 		//localStorage.getItem("bar", foo);
-		localStorage.getItem(test, textContent);
+		//localStorage.getItem(test, textContent);
+		var subject = localStorage.getItem("test");
+				
+		console.log(subject + " test");
+		
+		/*
 		for(var i in localStorage)
 		{
-			console.log(localStorage[1]);
+			console.log(i);
+			console.log(localStorage[i]);
 		}
+		*/
 	},
 	clearContent: function(){
 		localStorage.clear();
