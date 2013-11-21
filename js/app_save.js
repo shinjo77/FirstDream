@@ -28,7 +28,6 @@ var saveView = Backbone.View.extend({
 		//localStorage.getItem("bar", foo);
 		//localStorage.getItem(test, textContent);
 		var subject = localStorage.getItem("test");
-				
 		console.log(subject + " test");
 		
 		/*

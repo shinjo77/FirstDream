@@ -3,7 +3,7 @@ var Login = Backbone.Model.extend({
 		email: 'test@test.com',
 		pw: 'test'
 	},
-	el: $('#this_content'),
+	el: $('#content'),
 	
 	initialize: function(){
 		this.render();
@@ -16,7 +16,7 @@ var Login = Backbone.Model.extend({
 });
 
 var LoginView = Backbone.View.extend({
-	el: $('#this_content'),
+	el: $('#content'),
 	events: {
 		"click #signin": "doCheck"
 	},
@@ -45,6 +45,23 @@ var LoginView = Backbone.View.extend({
 			$(this.el).html('<h1>Pleasae check you login</h1>'); //this is to test
 			//$(this.el).html(contentTemplate);
 		}
+	},
+	register: function( event ){
+		//move to register page;
+		var self = this;
+		var TemplateSource = $("#add_detail_template").html();
+		var Template = Handlebars.compile(TemplateSource);		
+		//this.collection.toJSON();
+		$(this.el).html(Template());
+	},
+	render: function( event ){
+		// Button clicked, you can access the element that was clicked with event.currentTarget
+		var self = this;
+		var contentTemplateSource = $("#content_template").html();
+		var contentTemplate = Handlebars.compile(contentTemplateSource);		
+		var theData = this.login.toJSON();
+		//this.collection.toJSON();
+		$(this.el).html(contentTemplate(theData));
 	}
 });
 
