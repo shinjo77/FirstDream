@@ -3,7 +3,7 @@ var Login = Backbone.Model.extend({
 		email: 'test@test.com',
 		pw: 'test'
 	},
-	el: $('#content'),
+	el: $('#this_content'),
 	
 	initialize: function(){
 		this.render();
@@ -16,51 +16,41 @@ var Login = Backbone.Model.extend({
 });
 
 var LoginView = Backbone.View.extend({
-	el: $('#content'),
+	el: $('#this_content'),
 	events: {
-		"click #signin": "doCheck",
-		"click #register": "register"
+		"click #signin": "doCheck"
 	},
 	initialize: function(){
 		_.bindAll(this, 'doCheck');
 		
+		var login = new Login();
 		this.login = new Login();
-		this.getid = this.login.get("email");
-		this.getpw = this.login.get("pw");
+		this.getid = login.get("email");
+		this.getpw = login.get("pw");
 		this.thisid = $("#inputEmail").val();
 		this.thispw = $("#inputPassword").val();
 		
 	},
 	doCheck: function( event ){
 		// Button clicked, you can access the element that was clicked with event.currentTarget
-		//this.collection.toJSON();
-		
-		if( (this.thisid !== this.getid) && (this.thispw !== this.getpw)){
-			this.render(); //this is to test
-			//$(this.el).html('<h1>Please check you login</h1>');
-		} else {
-			$(this.el).html('<h1>Please check you login</h1>'); //this is to test
-			//$(this.el).html(contentTemplate);
-		}
-	},
-	register: function( event ){
-		// Button clicked, you can access the element that was clicked with event.currentTarget
-		//this.collection.toJSON();
-		var self = this;
-		var TemplateSource = $("#add_detail_template").html();
-		var Template = Handlebars.compile(TemplateSource);		
-		//this.collection.toJSON();
-		$(this.el).html(Template());
-	},
-	render: function( event ){
-		// Button clicked, you can access the element that was clicked with event.currentTarget
 		var self = this;
 		var contentTemplateSource = $("#content_template").html();
-		var contentTemplate = Handlebars.compile(contentTemplateSource);		
-		var theData = this.login.toJSON();
-		//this.collection.toJSON();
-		$(this.el).html(contentTemplate(theData));
+		var contentTemplate = Handlebars.compile(contentTemplateSource);
+		
+		
+		if( (this.thisid !== this.getid) && (this.thispw !== this.getpw)){
+			$(this.el).html(contentTemplate); //this is to test
+			//$(this.el).html('<h1>Please check you login</h1>');
+		} else {
+			$(this.el).html('<h1>Pleasae check you login</h1>'); //this is to test
+			//$(this.el).html(contentTemplate);
+		}
 	}
 });
 
 var loginview = new LoginView();
+
+/*
+$("#signin").on( "click", function() {
+  alert( '' );
+});*/
