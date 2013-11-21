@@ -18,7 +18,8 @@ var Login = Backbone.Model.extend({
 var LoginView = Backbone.View.extend({
 	el: $('#content'),
 	events: {
-		"click #signin": "doCheck"
+		"click #signin": "doCheck",
+		"click #register": "register"
 	},
 	initialize: function(){
 		_.bindAll(this, 'doCheck');
@@ -42,6 +43,15 @@ var LoginView = Backbone.View.extend({
 			//$(this.el).html(contentTemplate);
 		}
 	},
+	register: function( event ){
+		// Button clicked, you can access the element that was clicked with event.currentTarget
+		//this.collection.toJSON();
+		var self = this;
+		var TemplateSource = $("#add_detail_template").html();
+		var Template = Handlebars.compile(TemplateSource);		
+		//this.collection.toJSON();
+		$(this.el).html(Template());
+	},
 	render: function( event ){
 		// Button clicked, you can access the element that was clicked with event.currentTarget
 		var self = this;
@@ -54,8 +64,3 @@ var LoginView = Backbone.View.extend({
 });
 
 var loginview = new LoginView();
-
-/*
-$("#signin").on( "click", function() {
-  alert( '' );
-});*/
