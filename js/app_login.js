@@ -34,7 +34,6 @@ var LoginView = Backbone.View.extend({
 	doCheck: function( event ){
 		// Button clicked, you can access the element that was clicked with event.currentTarget
 		//this.collection.toJSON();
-		
 		if( (this.thisid !== this.getid) && (this.thispw !== this.getpw)){
 			this.render(); //this is to test
 			//$(this.el).html('<h1>Please check you login</h1>');
@@ -46,7 +45,6 @@ var LoginView = Backbone.View.extend({
 	register: function( event ){
 		// Button clicked, you can access the element that was clicked with event.currentTarget
 		//this.collection.toJSON();
-		var self = this;
 		var TemplateSource = $("#add_detail_template").html();
 		var Template = Handlebars.compile(TemplateSource);		
 		//this.collection.toJSON();
@@ -54,7 +52,6 @@ var LoginView = Backbone.View.extend({
 	},
 	render: function( event ){
 		// Button clicked, you can access the element that was clicked with event.currentTarget
-		var self = this;
 		var contentTemplateSource = $("#content_template").html();
 		var contentTemplate = Handlebars.compile(contentTemplateSource);		
 		var theData = this.login.toJSON();
