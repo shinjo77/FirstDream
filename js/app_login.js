@@ -27,14 +27,15 @@ var LoginView = Backbone.View.extend({
 		this.login = new Login();
 		this.getid = this.login.get("email");
 		this.getpw = this.login.get("pw");
-		this.thisid = $("#inputEmail").val();
-		this.thispw = $("#inputPassword").val();
 		
 	},
 	doCheck: function( event ){
 		// Button clicked, you can access the element that was clicked with event.currentTarget
 		//this.collection.toJSON();
-		if( (this.thisid !== this.getid) && (this.thispw !== this.getpw)){
+		this.thisid = $("#inputEmail").val();
+		this.thispw = $("#inputPassword").val();
+		
+		if( (this.thisid === this.getid) && (this.thispw === this.getpw)){
 			this.render(); //this is to test
 			//$(this.el).html('<h1>Please check you login</h1>');
 		} else {
